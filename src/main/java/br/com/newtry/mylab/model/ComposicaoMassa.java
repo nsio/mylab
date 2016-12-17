@@ -21,8 +21,8 @@ public class ComposicaoMassa {
 	private Long id;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_planeta")
-	private Planeta planetaCompMassa;
+	@JoinColumn(name = "id_corpo_selestial")
+	private CorpoSelestial corpoSelestialCompMassa;
 	
 	@OneToOne
 	@JoinColumn(name = "id_elemento")
@@ -43,14 +43,14 @@ public class ComposicaoMassa {
 		this.id = id;
 	}
 	
-	public Planeta getPlanetaCompMassa() {
-		return planetaCompMassa;
+	public CorpoSelestial getCorpoSelestialCompMassa() {
+		return corpoSelestialCompMassa;
 	}
-	
-	public void setPlanetaCompMassa(Planeta planetaCompMassa) {
-		this.planetaCompMassa = planetaCompMassa;
+
+	public void setCorpoSelestialCompMassa(CorpoSelestial corpoSelestialCompMassa) {
+		this.corpoSelestialCompMassa = corpoSelestialCompMassa;
 	}
-	
+
 	public ElementoTabelaPeriodica getElementoCompMassa() {
 		return elementoCompMassa;
 	}

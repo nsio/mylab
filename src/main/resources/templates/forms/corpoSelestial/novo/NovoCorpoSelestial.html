@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org./1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.com" 
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="/layout/LayoutPadrao">
+	<head>
+		<meta charset="UTF-8"></meta>
+		<title>MyLAb, Novo Corpo Selestial</title>
+	</head>
+	<body>
+		<section layout:fragment="conteudo">
+			
+			<div class="page-header">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-10">
+							<h1 class="panel-title">Novo Corpo Selestial</h1>
+						</div>
+						<div class="col-xs-2">
+							<div class="aw-page-header-controls">
+								<a class="btn btn-link" th:href="@{/corpoSelestial}">Voltar para listagem de Corpos Selestiais</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- É PRECISO COLOCAR A th:object DO THIMELEAF PARA O SPRINGA ENCONTRAR OS FIELDS DO OBJETO QUE QUEREMOS VALIDAR -->
+			<form class="form-vertical js-form-loading" method="post" th:action="@{/corpoSelestial}" th:object="${corpoSelestial}">
+				<!-- ######################################################################## -->
+				<!-- IMPORTANTE NOTAR QUE O NOME DO OBJETO PARA TRAFEGAR CORRETAMENTE ENTRE A VIEW E O CONTROLLER, PRECISA OBRIGATORIAMENTE, SER O NOME DO BEAN COM A PRIMEIRA LETRA MINUSCULA -->
+				<!-- ######################################################################## -->	
+				<div layout:include="/layout/MensagemSucesso"></div>
+				<div layout:include="/layout/MensagemErro"></div>
+				
+				<div class="form-group" th:classappend="${#fields.hasErrors('nomeCorpoSelestial')} ? has-error">
+					<label for="nomeCorpoSelestial" class="col-sm-2 control-label">Corpo Selestial</label>
+					<div class="col-sm-2">
+						<input id="nomeCorpoSelestial" type="text" class="form-control" th:field="*{nomeCorpoSelestial}"/>
+					</div>
+				</div>
+				
+				<div class="form-group" th:classappend="${#fields.hasErrors('tipoCorpoSelestial')} ? has-error">
+					<div class="col-sm-2">
+						<label for="tipoCorpoSelestial" class="col-sm-2 control-label">Tipo Corpo Selestial</label>
+						<select class="form-control" id="tipoCorpoSelestial" name="tipoCorpoSelestial">
+							<option th:each="tipoCorpoSelestial : ${tiposCorposSelestiais}" th:value="${tipoCorpoSelestial.id}" th:text="${tipoCorpoSelestial.descricao}"></option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group" th:classappend="${#fields.hasErrors('diametroEquatorial')} ? has-error">
+					<label for="diametroEquatorial" class="col-sm-2 control-label">Diâmetro Equatorial</label>
+					<div class="col-sm-2">
+						<input id="diametroEquatorial" type="text" class="form-control" th:field="*{diametroEquatorial}"/>
+					</div>
+					<div class="col-sm-2">
+						<select class="form-control" name="umDiametroEquatorial">
+							<option th:each="umDiametroEquatorial : ${unidadesMedida}" th:value="${umDiametroEquatorial.id}" th:text="${umDiametroEquatorial.simbolo}"></option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group" th:classappend="${#fields.hasErrors('inclinacaoAxial')} ? has-error">
+					<label for="inclinacaoAxial" class="col-sm-2 control-label">Inclinação Axial</label>
+					<div class="col-sm-2">
+						<input id="inclinacaoAxial" type="text" class="form-control" th:field="*{inclinacaoAxial}"/>
+					</div>
+					<div class="col-sm-2">
+						<select class="form-control" name="umInclinacaoAxial">
+							<option th:each="umInclinacaoAxial : ${unidadesMedida}" th:value="${umInclinacaoAxial.id}" th:text="${umInclinacaoAxial.simbolo}"></option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group" th:classappend="${#fields.hasErrors('areaTotal')} ? has-error">
+					<label for="areaTotal" class="col-sm-2 control-label">Area Total</label>
+					<div class="col-sm-2">
+						<input id="areaTotal" type="text" class="form-control" th:field="*{areaTotal}"/>
+					</div>
+					<div class="col-sm-2">
+						<select class="form-control" name="umAreaTotal">
+							<option th:each="umAreaTotal : ${unidadesMedida}" th:value="${umAreaTotal.id}" th:text="${umAreaTotal.simbolo}"></option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group" th:classappend="${#fields.hasErrors('temperaturaInterior')} ? has-error">
+					<label for="temperaturaInterior" class="col-sm-2 control-label">Temperatura Interior</label>
+					<div class="col-sm-2">
+						<input id="temperaturaInterior" type="text" class="form-control" th:field="*{temperaturaInterior}"/>
+					</div>
+					<div class="col-sm-2">
+						<select class="form-control" name="umTemperaturaInterior">
+							<option th:each="umTemperaturaInterior : ${unidadesMedida}" th:value="${umTemperaturaInterior.id}" th:text="${umTemperaturaInterior.simbolo}"></option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group" th:classappend="${#fields.hasErrors('velocidadeEscape')} ? has-error">
+					<label for="velocidadeEscape" class="col-sm-2 control-label">Velocidade de Escape</label>
+					<div class="col-sm-2">
+						<input id="velocidadeEscape" type="text" class="form-control" th:field="*{velocidadeEscape}"/>
+					</div>
+					<div class="col-sm-2">
+						<select class="form-control" name="umVelocidadeEscape">
+							<option th:each="umVelocidadeEscape : ${unidadesMedida}" th:value="${umVelocidadeEscape.id}" th:text="${umVelocidadeEscape.simbolo}"></option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group" th:classappend="${#fields.hasErrors('densidadeMedia')} ? has-error">
+					<label for="densidadeMedia" class="col-sm-2 control-label">Densidade Média</label>
+					<div class="col-sm-2">
+						<input id="densidadeMedia" type="text" class="form-control" th:field="*{densidadeMedia}"/>
+					</div>
+					<div class="col-sm-2">
+						<select class="form-control" name="umDensidadeMedia">
+							<option th:each="umDensidadeMedia : ${unidadesMedida}" th:value="${umDensidadeMedia.id}" th:text="${umDensidadeMedia.simbolo}"></option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary">Salvar</button>
+					</div>
+				</div>
+			</form>
+		</section>
+	</body>
+</html>

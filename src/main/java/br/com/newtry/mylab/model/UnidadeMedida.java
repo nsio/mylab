@@ -25,11 +25,11 @@ public class UnidadeMedida {
 	private Long id;
 	
 	@NotEmpty(message = "O Símbolo não pode ser nulo.")
-	@Size(max = 200, message="O símbolo não pode conter mais do que duzentos caracteres.")
+	@Size(max = 200, message="A Grandeza não pode conter mais do que duzentos caracteres.")
 	private String grandeza;
 	
 	@NotEmpty(message = "O Nome da Unidade não pode ser nulo.")
-	@Size(max = 200, message="O símbolo não pode conter mais do que duzentos caracteres.")
+	@Size(max = 200, message="O Nome da Unidade não pode conter mais do que duzentos caracteres.")
 	@Column(name="nm_unidade")
 	private String nmUnidade;
 	
@@ -38,7 +38,7 @@ public class UnidadeMedida {
 	private String simbolo;
 	
 	@NotEmpty(message = "A Regra não pode ser nulo.")
-	@Size(max = 200, message="O símbolo não pode conter mais do que duzentos caracteres.")
+	@Size(max = 200, message="A Regra não pode conter mais do que duzentos caracteres.")
 	private String regra;
 	
 	@DateTimeFormat(pattern = "dd/MM/yyyy hh:mm:ss")
@@ -49,78 +49,60 @@ public class UnidadeMedida {
 	// RELAÇÕES COM A PLANETA
 	//################################################################################
 	@OneToOne(mappedBy="umDiametroEquatoria")
-	private Planeta plaUmDiamentoEquatorial;
-	public Planeta getPlaUmDiamentoEquatorial() {
-		return plaUmDiamentoEquatorial;
+	private CorpoSelestial csUmDiamentoEquatorial;
+	public CorpoSelestial getCsUmDiamentoEquatorial() {
+		return csUmDiamentoEquatorial;
 	}
-	public void setPlaUmDiamentoEquatorial(Planeta plaUmDiamentoEquatorial) {
-		this.plaUmDiamentoEquatorial = plaUmDiamentoEquatorial;
+	public void setCsUmDiamentoEquatorial(CorpoSelestial csUmDiamentoEquatorial) {
+		this.csUmDiamentoEquatorial = csUmDiamentoEquatorial;
 	}
-	
-	@OneToOne(mappedBy="umInclinacaoAxial")
-	private Planeta plaUmInclinacaoAxial;
-	public Planeta getPlaUmInclinacaoAxial() {
-		return plaUmInclinacaoAxial;
-	}
-	public void setPlaUmInclinacaoAxial(Planeta plaUmInclinacaoAxial) {
-		this.plaUmInclinacaoAxial = plaUmInclinacaoAxial;
-	}
-	
-	@OneToOne(mappedBy="umAreaTotal")
-	private Planeta plaUmAreaTotal;
-	public Planeta getPlaUmAreaTotal() {
-		return plaUmAreaTotal;
-	}
-	public void setPlaUmAreaTotal(Planeta plaUmAreaTotal) {
-		this.plaUmAreaTotal = plaUmAreaTotal;
-	}
-	
-	@OneToOne(mappedBy="umTemperaturaInterior")
-	private Planeta plaUmTemperaturaMedida;
-	public Planeta getPlaUmTemperaturaMedida() {
-		return plaUmTemperaturaMedida;
-	}
-	public void setPlaUmTemperaturaMedida(Planeta plaUmTemperaturaMedida) {
-		this.plaUmTemperaturaMedida = plaUmTemperaturaMedida;
-	}
-	
-	@OneToOne(mappedBy="umVelocidadeEscape")
-	private Planeta plaUmVelocidadeEscape;
-	public Planeta getPlaUmVelocidadeEscape() {
-		return plaUmVelocidadeEscape;
-	}
-	public void setPlaUmVelocidadeEscape(Planeta plaUmVelocidadeEscape) {
-		this.plaUmVelocidadeEscape = plaUmVelocidadeEscape;
-	}
-	
-	@OneToOne(mappedBy="umDensidadeMedia")
-	private Planeta plaUmDensidadeMedia;
-	public Planeta getPlaUmDensidadeMedia() {
-		return plaUmDensidadeMedia;
-	}
-	public void setPlaUmDensidadeMedia(Planeta plaUmDensidadeMedia) {
-		this.plaUmDensidadeMedia = plaUmDensidadeMedia;
-	}
-	//################################################################################
-	
-	//################################################################################
-	//################################################################################
-	
-	//################################################################################
-	//################################################################################
-	
-	//################################################################################
-	//################################################################################
-	
-	//################################################################################
-	//################################################################################
-	
-	//################################################################################
-	//################################################################################
-	
-	//################################################################################
-	//################################################################################
 
+	@OneToOne(mappedBy="umInclinacaoAxial")
+	private CorpoSelestial csUmInclinacaoAxial;
+	public CorpoSelestial getCsUmInclinacaoAxial() {
+		return csUmInclinacaoAxial;
+	}
+	public void setCsUmInclinacaoAxial(CorpoSelestial csUmInclinacaoAxial) {
+		this.csUmInclinacaoAxial = csUmInclinacaoAxial;
+	}
+
+	@OneToOne(mappedBy="umAreaTotal")
+	private CorpoSelestial csUmAreaTotal;
+	public CorpoSelestial getCsUmAreaTotal() {
+		return csUmAreaTotal;
+	}
+	public void setCsUmAreaTotal(CorpoSelestial csUmAreaTotal) {
+		this.csUmAreaTotal = csUmAreaTotal;
+	}
+
+	@OneToOne(mappedBy="umTemperaturaInterior")
+	private CorpoSelestial csUmTemperaturaMedida;
+	public CorpoSelestial getCsUmTemperaturaMedida() {
+		return csUmTemperaturaMedida;
+	}
+	public void setCsUmTemperaturaMedida(CorpoSelestial csUmTemperaturaMedida) {
+		this.csUmTemperaturaMedida = csUmTemperaturaMedida;
+	}
+
+	@OneToOne(mappedBy="umVelocidadeEscape")
+	private CorpoSelestial csUmVelocidadeEscape;
+	public CorpoSelestial getCsUmVelocidadeEscape() {
+		return csUmVelocidadeEscape;
+	}
+	public void setCsUmVelocidadeEscape(CorpoSelestial csUmVelocidadeEscape) {
+		this.csUmVelocidadeEscape = csUmVelocidadeEscape;
+	}
+
+	@OneToOne(mappedBy="umDensidadeMedia")
+	private CorpoSelestial csUmDensidadeMedia;
+	public CorpoSelestial getCsUmDensidadeMedia() {
+		return csUmDensidadeMedia;
+	}
+	public void setCsUmDensidadeMedia(CorpoSelestial csUmDensidadeMedia) {
+		this.csUmDensidadeMedia = csUmDensidadeMedia;
+	}
+	//################################################################################
+	
 	//################################################################################
 	@OneToOne(mappedBy="unidadeMedida")
 	private ComposicaoMassa composicaoMassa;

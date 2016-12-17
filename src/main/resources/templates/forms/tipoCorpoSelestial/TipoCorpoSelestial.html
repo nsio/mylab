@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org./1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.com" 
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="/layout/LayoutPadrao">
+	<head>
+		<meta charset="UTF-8"></meta>
+		<title>MyLab Forms, Tipos de Corpos Selestiais</title>
+	</head>
+	<section layout:fragment="conteudo">
+		<div class="page-header">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xs-10">
+						<h1 class="panel-title">Tipo Corpos Selestiais</h1>
+					</div>
+					<div class="col-xs-2">
+						<div class="aw-page-header-controls">
+							<a class="btn btn-primary" th:href="@{/tipoCorpoSelestial/novo}">
+								<i class="fa fa-plus-circle"></i> <span class="hidden-xs hidden-sm">Novo Tipo Corpo Selestial</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="container-fluid">
+			<div class="table-responsive">
+				<table id="tableElementos" class="table table-striped table-bordered table-over table-condensed js-sticky-table">
+					<thead class="aw-table-header-solid">
+						<tr>
+							<th>Código</th>
+							<th>Descrição</th>
+						</tr>
+					</thead>	
+					<tbody>
+						<tr th:each="tpCorpoSelestial : ${tiposCorposSelestiais}">
+							<td th:text="${tpCorpoSelestial.id}"></td>
+							<td th:text="${tpCorpoSelestial.descricao}"></td>
+						</tr>
+						<!-- O MESMO FUNCIONA, NO CASO DAS DUAS CHAVES, PARA CONVERSÃO AUTOMÁTICA DO NUMERO -->
+						<tr th:if="${tiposCorposSelestiais.empty}">
+							<td colspan="9">Nenhum Planeta encontrado.</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+	</section>
+	
+</html>
