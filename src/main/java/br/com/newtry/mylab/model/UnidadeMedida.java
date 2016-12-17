@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -45,10 +46,96 @@ public class UnidadeMedida {
     @Temporal(TemporalType.DATE)
     private Date dtInsert = new Date();
 	
+	// RELAÇÕES COM A PLANETA
+	//################################################################################
+	@OneToOne(mappedBy="umDiametroEquatoria")
+	private Planeta plaUmDiamentoEquatorial;
+	public Planeta getPlaUmDiamentoEquatorial() {
+		return plaUmDiamentoEquatorial;
+	}
+	public void setPlaUmDiamentoEquatorial(Planeta plaUmDiamentoEquatorial) {
+		this.plaUmDiamentoEquatorial = plaUmDiamentoEquatorial;
+	}
+	
+	@OneToOne(mappedBy="umInclinacaoAxial")
+	private Planeta plaUmInclinacaoAxial;
+	public Planeta getPlaUmInclinacaoAxial() {
+		return plaUmInclinacaoAxial;
+	}
+	public void setPlaUmInclinacaoAxial(Planeta plaUmInclinacaoAxial) {
+		this.plaUmInclinacaoAxial = plaUmInclinacaoAxial;
+	}
+	
+	@OneToOne(mappedBy="umAreaTotal")
+	private Planeta plaUmAreaTotal;
+	public Planeta getPlaUmAreaTotal() {
+		return plaUmAreaTotal;
+	}
+	public void setPlaUmAreaTotal(Planeta plaUmAreaTotal) {
+		this.plaUmAreaTotal = plaUmAreaTotal;
+	}
+	
+	@OneToOne(mappedBy="umTemperaturaInterior")
+	private Planeta plaUmTemperaturaMedida;
+	public Planeta getPlaUmTemperaturaMedida() {
+		return plaUmTemperaturaMedida;
+	}
+	public void setPlaUmTemperaturaMedida(Planeta plaUmTemperaturaMedida) {
+		this.plaUmTemperaturaMedida = plaUmTemperaturaMedida;
+	}
+	
+	@OneToOne(mappedBy="umVelocidadeEscape")
+	private Planeta plaUmVelocidadeEscape;
+	public Planeta getPlaUmVelocidadeEscape() {
+		return plaUmVelocidadeEscape;
+	}
+	public void setPlaUmVelocidadeEscape(Planeta plaUmVelocidadeEscape) {
+		this.plaUmVelocidadeEscape = plaUmVelocidadeEscape;
+	}
+	
+	@OneToOne(mappedBy="umDensidadeMedia")
+	private Planeta plaUmDensidadeMedia;
+	public Planeta getPlaUmDensidadeMedia() {
+		return plaUmDensidadeMedia;
+	}
+	public void setPlaUmDensidadeMedia(Planeta plaUmDensidadeMedia) {
+		this.plaUmDensidadeMedia = plaUmDensidadeMedia;
+	}
+	//################################################################################
+	
+	//################################################################################
+	//################################################################################
+	
+	//################################################################################
+	//################################################################################
+	
+	//################################################################################
+	//################################################################################
+	
+	//################################################################################
+	//################################################################################
+	
+	//################################################################################
+	//################################################################################
+	
+	//################################################################################
+	//################################################################################
+
+	//################################################################################
+	@OneToOne(mappedBy="unidadeMedida")
+	private ComposicaoMassa composicaoMassa;
+	public ComposicaoMassa getComposicaoMassa() {
+		return composicaoMassa;
+	}
+	public void setComposicaoMassa(ComposicaoMassa composicaoMassa) {
+		this.composicaoMassa = composicaoMassa;
+	}
+	//################################################################################
+	
 	public Long getId() {
 		return id;
 	}
-
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
