@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+
+	<!-- THIMELEAF CONSEGUE PERCORRER OS FIELDS PARA CHECAR OS CAMPOS, ENTÃO PODEMOS EXIBIR AS MENSAGENS DE ERRO QUE FORAM DEFINIDAS NO BEAN, COM BEAN VALIDATIONS -->
+	<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
+		<div th:each="error : ${#fields.detailedErrors()}">
+			<span th:text="${error.message}"></span>
+		</div>
+	</div>
+
+</html>

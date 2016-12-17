@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org./1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.com" 
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="/layout/LayoutPadrao">
+	<head>
+		<meta charset="UTF-8"></meta>
+		<title>Novo Elemento da Tabela Periódica</title>
+	</head>
+	<body>
+		<section layout:fragment="conteudo">
+			
+			<div class="page-header">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-10">
+							<h1 class="panel-title">Tabela Periódica - Novo Elemento</h1>
+						</div>
+						<div class="col-xs-2">
+							<div class="aw-page-header-controls">
+								<a class="btn btn-link" th:href="@{/forms/periodica}">Volta para listagem de elmentos</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- É PRECISO COLOCAR A th:object DO THIMELEAF PARA O SPRINGA ENCONTRAR OS FIELDS DO OBJETO QUE QUEREMOS VALIDAR -->
+			<form class="form-vertical js-form-loading" method="post" th:action="@{/forms/periodica}" th:object="${elementoTabelaPeriodica}">
+				<!-- ######################################################################## -->
+				<!-- IMPORTANTE NOTAR QUE O NOME DO OBJETO PARA TRAFEGAR CORRETAMENTE ENTRE A VIEW E O CONTROLLER, PRECISA OBRIGATORIAMENTE, SER O NOME DO BEAN COM A PRIMEIRA LETRA MINUSCULA -->
+				<!-- ######################################################################## -->	
+				
+				
+				<div layout:include="/layout/MensagemSucesso"></div>
+				<div layout:include="/layout/MensagemErro"></div>
+				
+				<!-- PARA CADA CAMPO, PRECISAMOS INFORMAR O FIELD PARA O THYMELEAF, SE NÃO OS VALORES SERÃO PERDIDOS A CADA REQUISÇÃO  -->
+				<div class="form-group" th:classappend="${#fields.hasErrors('nrAtomico')} ? has-error">
+					<label for="nrAtomico" class="col-sm-2 control-label">Número Atomico</label>
+					<div class="col-sm-2">
+						<input id="nrAtomico" type="text" class="form-control" th:field="*{nrAtomico}"/>
+					</div>
+				</div>
+				<div class="form-group" th:classappend="${#fields.hasErrors('simbolo')} ? has-error">
+					<label for="simbolo" class="col-sm-2 control-label">Símbolo</label>
+					<div class="col-sm-2">
+						<input id="simbolo" type="text" class="form-control" th:field="*{simbolo}"/>
+					</div>
+				</div>
+				<div class="form-group" th:classappend="${#fields.hasErrors('nmElemento')} ? has-error">
+					<label for="nmElemento" class="col-sm-2 control-label">Nome do Elemento</label>
+					<div class="col-sm-2">
+						<input id="nmElemento" type="text" class="form-control" th:field="*{nmElemento}"/>
+					</div>
+				</div>
+				<div class="form-group" th:classappend="${#fields.hasErrors('massaAtomica')} ? has-error">
+					<label for="massaAtomica" class="col-sm-2 control-label">Massa Atomica</label>
+					<div class="col-sm-2">
+						<input id="massaAtomica" type="text" class="form-control" th:field="*{massaAtomica}"/>
+					</div>
+				</div>
+				<div class="form-group" th:classappend="${#fields.hasErrors('distribuicao')} ? has-error">
+					<label for="distribuicao" class="col-sm-2 control-label">Distribuição</label>
+					<div class="col-sm-2">
+						<input id="distribuicao" type="text" class="form-control" th:field="*{distribuicao}"/>
+					</div>
+				</div>
+				<div class="form-group" th:classappend="${#fields.hasErrors('linha')} ? has-error">
+					<label for="linha" class="col-sm-2 control-label">Linha</label>
+					<div class="col-sm-2">
+						<input id="linha" type="text" class="form-control" th:field="*{linha}"/>
+					</div>
+				</div>
+				<div class="form-group" th:classappend="${#fields.hasErrors('coluna')} ? has-error">
+					<label for="coluna" class="col-sm-2 control-label">Coluna</label>
+					<div class="col-sm-2">
+						<input id="coluna" type="text" class="form-control" th:field="*{coluna}"/>
+					</div>
+				</div>
+				<div class="form-group" th:classappend="${#fields.hasErrors('familia')} ? has-error">
+					<label for="familia" class="col-sm-2 control-label">Família</label>
+					<div class="col-sm-2">
+						<input id="familia" type="text" class="form-control" th:field="*{familia}"/>
+					</div>
+				</div>
+				<div class="form-group" th:classappend="${#fields.hasErrors('tipoElemento')} ? has-error">
+					<label for="tipo" class="col-sm-2 control-label">Tipo do Elemento</label>
+					<div class="col-sm-2">
+						<select class="form-control" name="tipoElemento">
+							<option th:each="tipoElemento : ${tiposElementos}" th:value="${tipoElemento}" th:text="${tipoElemento.descricao}"></option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary">Salvar</button>
+					</div>
+				</div>
+			</form>
+		</section>
+	</body>
+</html>

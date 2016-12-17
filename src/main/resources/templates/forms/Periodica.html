@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org./1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.com" 
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="/layout/LayoutPadrao">
+	<head>
+		<meta charset="UTF-8"></meta>
+		<title>MyLab Forms, Tabela Periódica</title>
+	</head>
+	<section layout:fragment="conteudo">
+		<div class="page-header">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xs-10">
+						<h1 class="panel-title">Elementos da Tabela Periódica</h1>
+					</div>
+					<div class="col-xs-2">
+						<div class="aw-page-header-controls">
+							<a class="btn btn-primary" th:href="@{/forms/periodica/novo}">
+								<i class="fa fa-plus-circle"></i> <span class="hidden-xs hidden-sm">Novo Elemento</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="container-fluid">
+			<div class="table-responsive">
+				<table id="tableElementos" class="table table-striped table-bordered table-over table-condensed js-sticky-table">
+					<thead class="aw-table-header-solid">
+						<tr>
+							<th>Código</th>
+							<th>Número Atomico</th>
+							<th>Simbolo</th>
+							<th>Nome Elemento</th>
+							<th>Massa Atomica</th>
+							<th>Distribuição</th>
+							<th>Linha</th>
+							<th>Coluna</th>
+							<th>Familia</th>
+							<th>Tipo do Elemento</th>
+							<th>Data da Criação</th>
+						</tr>
+					</thead>	
+					<tbody>
+						<tr th:each="elemento : ${elementos}">
+							<td th:text="${elemento.id}"></td>
+							<td class="text-right" th:text="${elemento.nrAtomico}"></td>
+							<td class="text-center" th:text="${elemento.simbolo}"></td>
+							
+							<td class="text-center" th:text="${elemento.nmElemento}"></td>
+							<!-- O PIPE É O OPERADOR PARA CONCATENAÇÃO NO THIMELEAF, VEJA O EXEMPLO ABAIXO -->
+							<td class="text-right" th:text="|${elemento.massaAtomica} eletrons|"></td>
+							<td class="text-center" th:text="${elemento.distribuicao}"></td>
+							<td class="text-right" th:text="${elemento.linha}"></td>
+							<td class="text-right" th:text="${elemento.coluna}"></td>
+							<td class="text-center" th:text="${elemento.familia}"></td>
+							
+							<td class="text-center">
+								<span class="label label-info" th:text="${elemento.tipoElemento.descricao}"></span>
+							</td>
+							
+							<!-- AQUI TEMOS DUAS CHAVES NA EXPRESSÃO PARA FAZER A CONVERSÃO, DE ACORDO COM O FORMATO DEFINIDO NA ANOTAÇÃO DO BEAN -->
+							<td th:text="${{elemento.dtInsert}}"></td>
+						</tr>
+						<!-- O MESMO FUNCIONA, NO CASO DAS DUAS CHAVES, PARA CONVERSÃO AUTOMÁTICA DO NUMERO -->
+						<tr th:if="${elementos.empty}">
+							<td colspan="9">Nenhum Elemento da Tabela Periódica encontrado.</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+	</section>
+	
+</html>
