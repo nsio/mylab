@@ -22,7 +22,7 @@ import br.com.newtry.mylab.service.UnidadeMedidaService;
 @Controller
 @RequestMapping("/corpoSelestial")
 public class CorpoSelestialController {
-
+	
 	@Autowired
 	private CorpoSelestialService corpoSelestialService;
 	@Autowired

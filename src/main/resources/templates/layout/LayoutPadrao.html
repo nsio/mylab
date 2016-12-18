@@ -32,34 +32,28 @@
 		        <span class="icon-bar"></span>
 		      </button>
 		    </div>
-			
+				
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav">
 		        <li class="fa fa-plus-circle"><a th:href="@{/home}" id="linkHome">Home</a></li>
-		        
 		        <li class="dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Forms <span class="caret"></span></a>
-		          
 		          <ul class="dropdown-menu">
-		          	
 		            <li><a href="#" id="linkFormulas">Formulas</a></li>
 		            <li role="separator" class="divider"></li>
 		            <li><a href="#" th:href="@{/forms/periodica}" id="linkPeridodica">Tabela Períodica</a></li>
 		            <li role="separator" class="divider"></li>
-		            <li class="fa fa-plus-circle"><a th:href="@{/corpoSelestial}" id="linkPlanets">Corpos Selestiais</a></li>
-		            <li class="fa fa-plus-circle"><a th:href="@{/tipoCorpoSelestial}" id="linkPlanets">Tipo Corpo Selestial</a></li>
+		            <li class="fa fa-plus-circle"><a th:href="@{/corpoSelestial}" id="linkCpSeles">Corpos Selestiais</a></li>
+		            <li class="fa fa-plus-circle"><a th:href="@{/tipoCorpoSelestial}" id="linkTpCpSeles">Tipo Corpo Selestial</a></li>
+		            <li class="fa fa-plus-circle"><a th:href="@{/composicaoMassa}" id="linkCompMassa">Composição da Massa</a></li>
 		            <li role="separator" class="divider"></li>
 		            <li><a th:href="@{/unidadeMedida}" id="linkUndMedidas">Unidades de Medidas</a></li>
 		            <li role="separator" class="divider"></li>
 		            <li><a th:href="@{/usuario}" id="linkUsers">Usuários</a></li>
 		          </ul>
-		          
 		        </li>
-		        
-		        
 		      </ul>
-		      
 		      <div class="text-right">
 			      <form class="form-inline">
 			        <div class="form-group">
@@ -68,7 +62,6 @@
 			        <button type="submit" class="btn btn-primary">Seek</button>  
 			      </form>
 		      </div>
-		      
 		    </div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->
 		</nav>

@@ -27,11 +27,6 @@ import br.com.newtry.mylab.model.enuns.TipoElemento;
 @Table(name="tb_tabela_periodica")
 public class ElementoTabelaPeriodica {
 	
-	/* 
-	 * PARA O CASO DE STRING, É MELHOR ANOTAR COM @NotEmpty
-	 * 
-	 * */
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -45,7 +40,7 @@ public class ElementoTabelaPeriodica {
 	private String simbolo;
     
 	@NotEmpty(message = "O Nome do Elemento não pode ser nulo.")
-	@Size(max = 50, message="O símbolo não pode conter mais do que cinquenta caracteres.")
+	@Size(max = 50, message="O Nome do Elemento não pode conter mais do que cinquenta caracteres.")
 	@Column(name="nm_elemento")
     private String nmElemento;
     

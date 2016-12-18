@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -15,6 +16,8 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import antlr.collections.List;
 
 @Entity
 @Table(name="tb_unidade_medida")
@@ -48,7 +51,7 @@ public class UnidadeMedida {
 	
 	// RELAÇÕES COM A PLANETA
 	//################################################################################
-	@OneToOne(mappedBy="umDiametroEquatoria")
+	@OneToOne(mappedBy="umDiametroEquatorial")
 	private CorpoSelestial csUmDiamentoEquatorial;
 	public CorpoSelestial getCsUmDiamentoEquatorial() {
 		return csUmDiamentoEquatorial;
@@ -104,13 +107,13 @@ public class UnidadeMedida {
 	//################################################################################
 	
 	//################################################################################
-	@OneToOne(mappedBy="unidadeMedida")
-	private ComposicaoMassa composicaoMassa;
-	public ComposicaoMassa getComposicaoMassa() {
-		return composicaoMassa;
+	@OneToMany(mappedBy="unidadeMedida")
+	private java.util.List<ComposicaoMassa> composicoesMassa;
+	public java.util.List<ComposicaoMassa> getComposicoesMassa() {
+		return composicoesMassa;
 	}
-	public void setComposicaoMassa(ComposicaoMassa composicaoMassa) {
-		this.composicaoMassa = composicaoMassa;
+	public void setComposicoesMassa(java.util.List<ComposicaoMassa> composicoesMassa) {
+		this.composicoesMassa = composicoesMassa;
 	}
 	//################################################################################
 	

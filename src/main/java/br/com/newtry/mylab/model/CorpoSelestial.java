@@ -34,7 +34,7 @@ public class CorpoSelestial {
 	
 	@OneToOne
 	@JoinColumn(name = "id_um_diametro_equatorial")
-	private UnidadeMedida umDiametroEquatoria;
+	private UnidadeMedida umDiametroEquatorial;
 	
 	@NotNull(message = "A Inclinação Axial não pode ser nula.")
 	@Column(name = "inclinacao_axial")
@@ -116,12 +116,12 @@ public class CorpoSelestial {
 		this.diametroEquatorial = diametroEquatorial;
 	}
 	
-	public UnidadeMedida getUmDiametroEquatoria() {
-		return umDiametroEquatoria;
+	public UnidadeMedida getUmDiametroEquatorial() {
+		return umDiametroEquatorial;
 	}
 	
-	public void setUmDiametroEquatoria(UnidadeMedida umDiametroEquatoria) {
-		this.umDiametroEquatoria = umDiametroEquatoria;
+	public void setUmDiametroEquatorial(UnidadeMedida umDiametroEquatorial) {
+		this.umDiametroEquatorial = umDiametroEquatorial;
 	}
 	
 	public BigDecimal getInclinacaoAxial() {

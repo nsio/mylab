@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org./1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.com" 
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="/layout/LayoutPadrao">
+	<head>
+		<meta charset="UTF-8"></meta>
+		<title>MyLAb, Nova Compisição de Massa</title>
+	</head>
+	<body>
+		<section layout:fragment="conteudo">
+			<div class="page-header">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-10">
+							<h1 class="panel-title">Nova Composição de Massa</h1>
+						</div>
+						<div class="col-xs-2">
+							<div class="aw-page-header-controls">
+								<a class="btn btn-link" th:href="@{/composicaoMassa}">Voltar para listagem de Composição de Massa</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- É PRECISO COLOCAR A th:object DO THIMELEAF PARA O SPRINGA ENCONTRAR OS FIELDS DO OBJETO QUE QUEREMOS VALIDAR -->
+			<form class="form-vertical js-form-loading" method="post" th:action="@{/composicaoMassa}" th:object="${composicaoMassa}">
+				<!-- ######################################################################## -->
+				<!-- IMPORTANTE NOTAR QUE O NOME DO OBJETO PARA TRAFEGAR CORRETAMENTE ENTRE A VIEW E O CONTROLLER, PRECISA OBRIGATORIAMENTE, SER O NOME DO BEAN COM A PRIMEIRA LETRA MINUSCULA -->
+				<!-- ######################################################################## -->	
+				<div layout:include="/layout/MensagemSucesso"></div>
+				<div layout:include="/layout/MensagemErro"></div>
+				
+				<div class="form-group" th:classappend="${#fields.hasErrors('corpoSelestialCompMassa')} ? has-error">
+					<div class="col-sm-1">
+						<label for="corpoSelestialCompMassa" class="col-sm-2 control-label">Corpo Selestial</label>
+					</div>
+					<div class="col-sm-2">
+						<select class="form-control" id="corpoSelestialCompMassa" name="corpoSelestialCompMassa">
+							<option th:each="corpoSelestial : ${corposSelestiais}" th:value="${corpoSelestial.id}" th:text="${corpoSelestial.nomeCorpoSelestial}"></option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group" th:classappend="${#fields.hasErrors('elementoCompMassa')} ? has-error">
+					<div class="col-sm-1">
+						<label for="elementoQuimico" class="col-sm-2 control-label">Elemento</label>
+					</div>
+					<div class="col-sm-2">
+						<select class="form-control" name="elementoCompMassa">
+							<option th:each="elementoTbPeriodica : ${elementosTabelaPeriodica}" th:value="${elementoTbPeriodica.id}" th:text="${elementoTbPeriodica.nmElemento}"></option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group" th:classappend="${#fields.hasErrors('composicao')} ? has-error">
+					<label for="composicaoMassa" class="col-sm-1 control-label">Composição</label>
+					<div class="col-sm-2">
+						<input id="composicaoMassa" type="text" class="form-control" th:field="*{composicao}"/>
+					</div>
+					
+				</div>
+				<div class="col-sm-2">
+						<select class="form-control" name="unidadeMedida">
+							<option th:each="umCompMassa : ${unidadesMedida}" th:value="${umCompMassa.id}" th:text="${umCompMassa.simbolo}"></option>
+						</select>
+					</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary">Salvar</button>
+					</div>
+				</div>
+			</form>
+		</section>
+	</body>
+</html>

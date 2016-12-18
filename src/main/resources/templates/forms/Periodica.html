@@ -51,7 +51,7 @@
 							
 							<td class="text-center" th:text="${elemento.nmElemento}"></td>
 							<!-- O PIPE É O OPERADOR PARA CONCATENAÇÃO NO THIMELEAF, VEJA O EXEMPLO ABAIXO -->
-							<td class="text-right" th:text="|${elemento.massaAtomica} eletrons|"></td>
+							<td class="text-right" th:text="${elemento.massaAtomica}"></td>
 							<td class="text-center" th:text="${elemento.distribuicao}"></td>
 							<td class="text-right" th:text="${elemento.linha}"></td>
 							<td class="text-right" th:text="${elemento.coluna}"></td>

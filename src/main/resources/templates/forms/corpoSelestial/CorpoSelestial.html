@@ -24,7 +24,6 @@
 				</div>
 			</div>
 		</div>
-		
 		<div class="container-fluid">
 			<div class="table-responsive">
 				<table id="tableElementos" class="table table-striped table-bordered table-over table-condensed js-sticky-table">
@@ -37,7 +36,6 @@
 							<th>Inclinação Axial</th>
 							<th>Área Total</th>
 							<th>Temperatura Interior</th>
-							<th>Duração do Dia</th>
 							<th>Velocidade Escape</th>
 							<th>Densidade Média</th>
 						</tr>
@@ -49,7 +47,7 @@
 							<td th:text="${corpoSelestial.tipoCorpoSelestial.descricao}"></td>
 							<td class="text-right">
 								<span th:text="${corpoSelestial.diametroEquatorial}"></span>
-								<span th:text="${corpoSelestial.umDiametroEquatoria.simbolo}"></span>
+								<span th:text="${corpoSelestial.umDiametroEquatorial.simbolo}"></span>
 							</td>
 							<td class="text-center">
 								<span th:text="${corpoSelestial.inclinacaoAxial}"></span>
@@ -81,7 +79,5 @@
 				</table>
 			</div>
 		</div>
-		
 	</section>
-	
 </html>
