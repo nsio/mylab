@@ -1,6 +1,7 @@
 package br.com.newtry.mylab.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,8 +17,6 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
-
-import antlr.collections.List;
 
 @Entity
 @Table(name="tb_unidade_medida")
@@ -108,12 +107,21 @@ public class UnidadeMedida {
 	
 	//################################################################################
 	@OneToMany(mappedBy="unidadeMedida")
-	private java.util.List<ComposicaoMassa> composicoesMassa;
-	public java.util.List<ComposicaoMassa> getComposicoesMassa() {
+	private List<ComposicaoMassa> composicoesMassa;
+	public List<ComposicaoMassa> getComposicoesMassa() {
 		return composicoesMassa;
 	}
 	public void setComposicoesMassa(java.util.List<ComposicaoMassa> composicoesMassa) {
 		this.composicoesMassa = composicoesMassa;
+	}
+	
+	@OneToMany(mappedBy="umAreaCorpoSelestial")
+	private List<AreaCorpoSelestial> areasCorpoSelestial;
+	public List<AreaCorpoSelestial> getAreasCorpoSelestial() {
+		return areasCorpoSelestial;
+	}
+	public void setAreasCorpoSelestial(List<AreaCorpoSelestial> areasCorpoSelestial) {
+		this.areasCorpoSelestial = areasCorpoSelestial;
 	}
 	//################################################################################
 	

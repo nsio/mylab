@@ -81,7 +81,6 @@ public class CorpoSelestial {
 	private TipoCorpoSelestial tipoCorpoSelestial;
 	
 	// #########################################################################################################################
-	// RELAÇÃO COM A COMPOSIÇÃO DA MASSA
 	@OneToMany(mappedBy = "corpoSelestialCompMassa")
 	private List<ComposicaoMassa> composicaoMassa;
 	public List<ComposicaoMassa> getComposicaoMassa() {
@@ -89,6 +88,15 @@ public class CorpoSelestial {
 	}
 	public void setComposicaoMassa(List<ComposicaoMassa> composicaoMassa) {
 		this.composicaoMassa = composicaoMassa;
+	}
+	
+	@OneToMany(mappedBy = "corpoSelestialArea")
+	private List<AreaCorpoSelestial> corpoSelestialArea;
+	public List<AreaCorpoSelestial> getCorpoSelestialArea() {
+		return corpoSelestialArea;
+	}
+	public void setCorpoSelestialArea(List<AreaCorpoSelestial> corpoSelestialArea) {
+		this.corpoSelestialArea = corpoSelestialArea;
 	}
 	// #########################################################################################################################
 	
@@ -219,7 +227,7 @@ public class CorpoSelestial {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -236,7 +244,5 @@ public class CorpoSelestial {
 			return false;
 		return true;
 	}
-	
-	
 	
 }

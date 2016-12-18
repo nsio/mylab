@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org./1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.com" 
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="/layout/LayoutPadrao">
+	<head>
+		<meta charset="UTF-8"></meta>
+		<title>MyLAb, Nova Área do Corpo Selestial</title>
+	</head>
+	<body>
+		<section layout:fragment="conteudo">
+			<div class="page-header">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-10">
+							<h1 class="panel-title">Nova Área do Corpo Selestial</h1>
+						</div>
+						<div class="col-xs-2">
+							<div class="aw-page-header-controls">
+								<a class="btn btn-link" th:href="@{/areaCorpoSelestial}">Voltar para listagem de Área do Corpo Selestial</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- É PRECISO COLOCAR A th:object DO THIMELEAF PARA O SPRINGA ENCONTRAR OS FIELDS DO OBJETO QUE QUEREMOS VALIDAR -->
+			<form class="form-vertical js-form-loading" method="post" th:action="@{/areaCorpoSelestial}" th:object="${areaCorpoSelestial}">
+				<!-- ######################################################################## -->
+				<!-- IMPORTANTE NOTAR QUE O NOME DO OBJETO PARA TRAFEGAR CORRETAMENTE ENTRE A VIEW E O CONTROLLER, PRECISA OBRIGATORIAMENTE, SER O NOME DO BEAN COM A PRIMEIRA LETRA MINUSCULA -->
+				<!-- ######################################################################## -->	
+				<div layout:include="/layout/MensagemSucesso"></div>
+				<div layout:include="/layout/MensagemErro"></div>
+				
+				<div class="form-group" th:classappend="${#fields.hasErrors('corpoSelestialArea')} ? has-error">
+					<div class="col-sm-1">
+						<label for="corpoSelestialArea" class="col-sm-2 control-label">Corpo Selestial</label>
+					</div>
+					<div class="col-sm-2">
+						<select class="form-control" id="corpoSelestialArea" name="corpoSelestialArea">
+							<option th:each="corpoSelestial : ${corposSelestiais}" th:value="${corpoSelestial.id}" th:text="${corpoSelestial.nomeCorpoSelestial}"></option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group" th:classappend="${#fields.hasErrors('area')} ? has-error">
+					<label for="area" class="col-sm-1 control-label">Área do Corpo Selestial</label>
+					<div class="col-sm-2">
+						<input id="area" type="text" class="form-control" th:field="*{area}"/>
+					</div>
+				</div>
+				<div class="col-sm-2">
+					<select class="form-control" name="umAreaCorpoSelestial">
+						<option th:each="umAreaCpSelste : ${unidadesMedida}" th:value="${umAreaCpSelste.id}" th:text="${umAreaCpSelste.simbolo}"></option>
+					</select>
+				</div>
+				
+				<div class="form-group" th:classappend="${#fields.hasErrors('tipoAreaCorpoSelestial')} ? has-error">
+					<label for="tipo" class="col-sm-2 control-label">Tipo da Área do Corpo Selestial</label>
+					<div class="col-sm-2">
+						<select class="form-control" name="tipoAreaCorpoSelestial">
+							<option th:each="tipoAreaCpSeleste : ${tiposAreasCpSeleste}" th:value="${tipoAreaCpSeleste}" th:text="${tipoAreaCpSeleste.descricao}"></option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary">Salvar</button>
+					</div>
+				</div>
+			</form>
+		</section>
+	</body>
+</html>
