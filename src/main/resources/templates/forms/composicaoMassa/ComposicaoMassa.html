@@ -46,6 +46,11 @@
 							</td>
 							<td class="text-center" th:text="${composicaoMassa.composicao}"></td>
 							<td class="text-center" th:text="${composicaoMassa.unidadeMedida.simbolo}"></td>
+							<td class="text-center">
+								<a class="btn btn-link btn-xs" th:href="@{/composicaoMassa/{codigo}(codigo=${composicaoMassa.id})}">
+									<span class="glyphicon glyphicon-pencil"></span>
+								</a>
+							</td>
 						</tr>
 						<!-- O MESMO FUNCIONA, NO CASO DAS DUAS CHAVES, PARA CONVERSÃO AUTOMÁTICA DO NUMERO -->
 						<tr th:if="${compsMassa.empty}">

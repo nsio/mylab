@@ -24,4 +24,9 @@ public class ElementoTabelaPeriodiacaService extends ServiceMyLab<ElementoTabela
 		return this.elementos.findAll();
 	}
 	
+	@Override
+	public ElementoTabelaPeriodica recuperPeloId(Long id) {
+		return this.elementos.findOne(id);
+	}
+	
 }

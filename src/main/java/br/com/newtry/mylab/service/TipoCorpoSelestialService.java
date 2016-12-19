@@ -23,5 +23,10 @@ public class TipoCorpoSelestialService extends ServiceMyLab<TipoCorpoSelestial> 
 	public List<TipoCorpoSelestial> listarTodos() {
 		return this.tpsCorposSelesciaisRepo.findAll();
 	}
+
+	@Override
+	public TipoCorpoSelestial recuperPeloId(Long id) {
+		return this.tpsCorposSelesciaisRepo.findOne(id);
+	}
 	
 }

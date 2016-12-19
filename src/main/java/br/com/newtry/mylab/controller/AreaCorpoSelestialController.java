@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -54,6 +55,13 @@ public class AreaCorpoSelestialController {
 		this.areaCorpoSelestialService.salvar(areaCorpoSelestial);
 		redirectAttributes.addFlashAttribute("mensagem", "Área do Corpo Selestial foi salvo com sucesso");
 		return "redirect:/areaCorpoSelestial/novo";
+	}
+	
+	@RequestMapping("{codigo}")
+	public ModelAndView edicao(@PathVariable("codigo") AreaCorpoSelestial areaCorpoSelestial){
+		ModelAndView mv = new ModelAndView("/forms/areaCorpoSelestial/novo/NovoAreaCorpoSelestial");
+		mv.addObject(areaCorpoSelestial);
+		return mv;
 	}
 	
 	@ModelAttribute("unidadesMedida")

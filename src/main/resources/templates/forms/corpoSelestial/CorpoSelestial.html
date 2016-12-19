@@ -70,6 +70,11 @@
 								<span th:text="${corpoSelestial.densidadeMedia}"></span>
 								<span th:text="${corpoSelestial.umDensidadeMedia.simbolo}"></span>
 							</td>
+							<td class="text-center">
+								<a class="btn btn-link btn-xs" th:href="@{/corpoSelestial/{codigo}(codigo=${corpoSelestial.id})}">
+									<span class="glyphicon glyphicon-pencil"></span>
+								</a>
+							</td>
 						</tr>
 						<!-- O MESMO FUNCIONA, NO CASO DAS DUAS CHAVES, PARA CONVERSÃO AUTOMÁTICA DO NUMERO -->
 						<tr th:if="${corposSelestiais.empty}">

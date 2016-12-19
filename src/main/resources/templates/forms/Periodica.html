@@ -56,13 +56,18 @@
 							<td class="text-right" th:text="${elemento.linha}"></td>
 							<td class="text-right" th:text="${elemento.coluna}"></td>
 							<td class="text-center" th:text="${elemento.familia}"></td>
-							
 							<td class="text-center">
 								<span class="label label-info" th:text="${elemento.tipoElemento.descricao}"></span>
 							</td>
-							
 							<!-- AQUI TEMOS DUAS CHAVES NA EXPRESSÃO PARA FAZER A CONVERSÃO, DE ACORDO COM O FORMATO DEFINIDO NA ANOTAÇÃO DO BEAN -->
 							<td th:text="${{elemento.dtInsert}}"></td>
+							
+							<td class="text-center">
+								<a class="btn btn-link btn-xs" th:href="@{/forms/periodica/{codigo}(codigo=${elemento.id})}">
+									<span class="glyphicon glyphicon-pencil"></span>
+								</a>
+							</td>
+										
 						</tr>
 						<!-- O MESMO FUNCIONA, NO CASO DAS DUAS CHAVES, PARA CONVERSÃO AUTOMÁTICA DO NUMERO -->
 						<tr th:if="${elementos.empty}">
@@ -72,7 +77,5 @@
 				</table>
 			</div>
 		</div>
-		
 	</section>
-	
 </html>

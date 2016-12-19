@@ -30,7 +30,7 @@
 				<!-- ######################################################################## -->	
 				<div layout:include="/layout/MensagemSucesso"></div>
 				<div layout:include="/layout/MensagemErro"></div>
-				
+				<input type="hidden" th:field="*{id}"/>
 				<div class="form-group" th:classappend="${#fields.hasErrors('corpoSelestialCompMassa')} ? has-error">
 					<div class="col-sm-1">
 						<label for="corpoSelestialCompMassa" class="col-sm-2 control-label">Corpo Selestial</label>

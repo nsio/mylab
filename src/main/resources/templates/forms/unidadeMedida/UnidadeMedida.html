@@ -24,7 +24,6 @@
 				</div>
 			</div>
 		</div>
-		
 		<div class="container-fluid">
 			<div class="table-responsive">
 				<table id="tableElementos" class="table table-striped table-bordered table-over table-condensed js-sticky-table">
@@ -43,13 +42,16 @@
 							<td th:text="${unidadeMedida.id}"></td>
 							<td class="text-right" th:text="${unidadeMedida.grandeza}"></td>
 							<td class="text-center" th:text="${unidadeMedida.nmUnidade}"></td>
-							
 							<td class="text-center" th:text="${unidadeMedida.simbolo}"></td>
 							<!-- O PIPE É O OPERADOR PARA CONCATENAÇÃO NO THIMELEAF, VEJA O EXEMPLO ABAIXO -->
 							<td class="text-right" th:text="${unidadeMedida.regra}"></td>
-							
 							<!-- AQUI TEMOS DUAS CHAVES NA EXPRESSÃO PARA FAZER A CONVERSÃO, DE ACORDO COM O FORMATO DEFINIDO NA ANOTAÇÃO DO BEAN -->
 							<td th:text="${{unidadeMedida.dtInsert}}"></td>
+							<td class="text-center">
+								<a class="btn btn-link btn-xs" th:href="@{/unidadeMedida/{codigo}(codigo=${unidadeMedida.id})}">
+									<span class="glyphicon glyphicon-pencil"></span>
+								</a>
+							</td>
 						</tr>
 						<!-- O MESMO FUNCIONA, NO CASO DAS DUAS CHAVES, PARA CONVERSÃO AUTOMÁTICA DO NUMERO -->
 						<tr th:if="${unidadesMedida.empty}">
@@ -59,7 +61,5 @@
 				</table>
 			</div>
 		</div>
-		
 	</section>
-	
 </html>

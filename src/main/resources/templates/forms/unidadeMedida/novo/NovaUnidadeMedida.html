@@ -9,7 +9,6 @@
 	</head>
 	<body>
 		<section layout:fragment="conteudo">
-			
 			<div class="page-header">
 				<div class="container-fluid">
 					<div class="row">
@@ -24,16 +23,14 @@
 					</div>
 				</div>
 			</div>
-			
 			<!-- É PRECISO COLOCAR A th:object DO THIMELEAF PARA O SPRINGA ENCONTRAR OS FIELDS DO OBJETO QUE QUEREMOS VALIDAR -->
 			<form class="form-vertical js-form-loading" method="post" th:action="@{/unidadeMedida}" th:object="${unidadeMedida}">
 				<!-- ######################################################################## -->
 				<!-- IMPORTANTE NOTAR QUE O NOME DO OBJETO PARA TRAFEGAR CORRETAMENTE ENTRE A VIEW E O CONTROLLER, PRECISA OBRIGATORIAMENTE, SER O NOME DO BEAN COM A PRIMEIRA LETRA MINUSCULA -->
 				<!-- ######################################################################## -->	
-				
 				<div layout:include="/layout/MensagemSucesso"></div>
 				<div layout:include="/layout/MensagemErro"></div>
-				
+				<input type="hidden" th:field="*{id}"/>
 				<!-- PARA CADA CAMPO, PRECISAMOS INFORMAR O FIELD PARA O THYMELEAF, SE NÃO OS VALORES SERÃO PERDIDOS A CADA REQUISÇÃO  -->
 				<div class="form-group" th:classappend="${#fields.hasErrors('grandeza')} ? has-error">
 					<label for="grandeza" class="col-sm-2 control-label">Grandeza</label>

@@ -21,5 +21,10 @@ public class ComposicaoMassaService extends ServiceMyLab<ComposicaoMassa> {
 	public List<ComposicaoMassa> listarTodos() {
 		return this.composicoesMassa.findAll();
 	}
+
+	@Override
+	public ComposicaoMassa recuperPeloId(Long id) {
+		return this.composicoesMassa.findOne(id);
+	}
 	
 }

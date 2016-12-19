@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,12 +22,13 @@ import br.com.newtry.mylab.service.ElementoTabelaPeriodiacaService;
 @RequestMapping("/forms/periodica")
 public class PeriodicaController {
 	
+	private static final String FORMS_PERIODICA = "/forms/Periodica";
 	@Autowired
 	private ElementoTabelaPeriodiacaService elementoService;
 	
 	@RequestMapping
 	public ModelAndView loadTabelaPeriodica(){
-		ModelAndView mv = new ModelAndView("/forms/Periodica");
+		ModelAndView mv = new ModelAndView(FORMS_PERIODICA);
 		mv.addObject("elementos", this.elementoService.listarTodos());
 		return mv;
 	}
@@ -57,6 +59,14 @@ public class PeriodicaController {
 		redirectAttributes.addFlashAttribute("mensagem", "Elemento salvo com sucesso!");
 		
 		return "redirect:/forms/periodica/novo";
+	}
+	
+	@RequestMapping("{codigo}")
+	public ModelAndView edicao(@PathVariable("codigo") ElementoTabelaPeriodica elemento){
+		ModelAndView mv = new ModelAndView("/forms/novo/NovoElemento");
+		mv.addObject(elemento);
+		return mv;
+		
 	}
 	
 	// ESSE MÉTODO ANOTADO COM @MODELATTRIBUTE, EVITA DE ADICIONAR VARIAS VEZES A MESMA COLEÇÃO

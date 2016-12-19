@@ -10,7 +10,7 @@ import br.com.newtry.mylab.repository.Usuarios;
 
 @Service
 public class UsuarioService extends ServiceMyLab<Usuario> {
-
+	
 	@Autowired
 	private Usuarios usuarios;
 	
@@ -23,5 +23,10 @@ public class UsuarioService extends ServiceMyLab<Usuario> {
 	public List<Usuario> listarTodos() {
 		return this.usuarios.findAll();
 	}
-
+	
+	@Override
+	public Usuario recuperPeloId(Long id) {
+		return this.usuarios.findOne(id);
+	}
+	
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -53,6 +54,13 @@ public class CorpoSelestialController {
 		redirectAttributes.addFlashAttribute("mensagem", "O Corpo Selestial foi salvo com sucesso");
 		
 		return "redirect:/corpoSelestial/novo";
+	}
+	
+	@RequestMapping("{codigo}")
+	public ModelAndView edicao(@PathVariable("codigo") CorpoSelestial corpoSelestial){
+		ModelAndView mv = new ModelAndView("/forms/corpoSelestial/novo/NovoCorpoSelestial");
+		mv.addObject(corpoSelestial);
+		return mv;
 	}
 	
 	@ModelAttribute("unidadesMedida")

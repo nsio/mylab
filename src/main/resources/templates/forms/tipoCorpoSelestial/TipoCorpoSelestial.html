@@ -38,6 +38,11 @@
 						<tr th:each="tpCorpoSelestial : ${tiposCorposSelestiais}">
 							<td th:text="${tpCorpoSelestial.id}"></td>
 							<td th:text="${tpCorpoSelestial.descricao}"></td>
+							<td class="text-center">
+								<a class="btn btn-link btn-xs" th:href="@{/tipoCorpoSelestial/{codigo}(codigo=${tpCorpoSelestial.id})}">
+									<span class="glyphicon glyphicon-pencil"></span>
+								</a>
+							</td>
 						</tr>
 						<!-- O MESMO FUNCIONA, NO CASO DAS DUAS CHAVES, PARA CONVERSÃO AUTOMÁTICA DO NUMERO -->
 						<tr th:if="${tiposCorposSelestiais.empty}">

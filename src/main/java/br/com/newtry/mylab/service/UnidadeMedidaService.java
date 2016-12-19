@@ -10,18 +10,23 @@ import br.com.newtry.mylab.repository.UnidadesMedida;
 
 @Service
 public class UnidadeMedidaService extends ServiceMyLab<UnidadeMedida> {
-
+	
 	@Autowired
 	private UnidadesMedida unidadesMedida;
-
+	
 	@Override
 	public void salvar(UnidadeMedida entity) {
 		this.unidadesMedida.save(entity);
 	}
-
+	
 	@Override
 	public List<UnidadeMedida> listarTodos() {
 		return this.unidadesMedida.findAll();
+	}
+	
+	@Override
+	public UnidadeMedida recuperPeloId(Long id) {
+		return this.unidadesMedida.findOne(id);
 	}
 	
 }

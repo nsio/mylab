@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -42,6 +43,13 @@ public class TipoCorpoSelestialController {
 		redirectAttributes.addFlashAttribute("mensagem", "O Tipo Corpo Selestial foi salvo com sucesso");
 		
 		return "redirect:/tipoCorpoSelestial/novo";
+	}
+	
+	@RequestMapping("{codigo}")
+	public ModelAndView edicao(@PathVariable("codigo") TipoCorpoSelestial tipoCorpoSelestial){
+		ModelAndView mv = new ModelAndView("/forms/tipoCorpoSelestial/novo/NovoTipoCorpoSelestial");
+		mv.addObject(tipoCorpoSelestial);
+		return mv;
 	}
 	
 }

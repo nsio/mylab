@@ -45,6 +45,11 @@
 							<td class="text-center">
 								<span class="label label-info" th:text="${areaCorpoSelestial.tipoAreaCorpoSelestial.descricao}"></span>
 							</td>
+							<td class="text-center">
+								<a class="btn btn-link btn-xs" th:href="@{/areaCorpoSelestial/{codigo}(codigo=${areaCorpoSelestial.id})}">
+									<span class="glyphicon glyphicon-pencil"></span>
+								</a>
+							</td>
 						</tr>
 						<!-- O MESMO FUNCIONA, NO CASO DAS DUAS CHAVES, PARA CONVERSÃO AUTOMÁTICA DO NUMERO -->
 						<tr th:if="${areas.empty}">

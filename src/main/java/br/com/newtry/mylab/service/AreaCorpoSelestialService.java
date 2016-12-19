@@ -10,7 +10,7 @@ import br.com.newtry.mylab.repository.AreasCorpoSelestial;
 
 @Service
 public class AreaCorpoSelestialService extends ServiceMyLab<AreaCorpoSelestial> {
-
+	
 	@Autowired
 	private AreasCorpoSelestial areasCorpoSelestial;
 	
@@ -23,7 +23,10 @@ public class AreaCorpoSelestialService extends ServiceMyLab<AreaCorpoSelestial> 
 	public List<AreaCorpoSelestial> listarTodos() {
 		return this.areasCorpoSelestial.findAll();
 	}
-
 	
+	@Override
+	public AreaCorpoSelestial recuperPeloId(Long id) {
+		return this.areasCorpoSelestial.findOne(id);
+	}
 	
 }

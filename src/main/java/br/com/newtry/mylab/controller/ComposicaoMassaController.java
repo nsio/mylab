@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -56,6 +57,13 @@ public class ComposicaoMassaController {
 		this.composicaoMassaService.salvar(composicaoMassa);
 		redirectAttributes.addFlashAttribute("mensagem", "Composição da Massa foi salvo com sucesso");
 		return "redirect:/composicaoMassa/novo";
+	}
+	
+	@RequestMapping("{codigo}")
+	public ModelAndView edicao(@PathVariable("codigo") ComposicaoMassa composicaoMassa){
+		ModelAndView mv = new ModelAndView("/forms/composicaoMassa/novo/NovoComposicaoMassa");
+		mv.addObject(composicaoMassa);
+		return mv;
 	}
 	
 	@ModelAttribute("unidadesMedida")
