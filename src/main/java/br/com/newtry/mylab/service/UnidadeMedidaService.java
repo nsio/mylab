@@ -28,5 +28,10 @@ public class UnidadeMedidaService extends ServiceMyLab<UnidadeMedida> {
 	public UnidadeMedida recuperPeloId(Long id) {
 		return this.unidadesMedida.findOne(id);
 	}
+
+	@Override
+	public void deletar(Long id) {
+		this.unidadesMedida.delete(id);
+	}
 	
 }

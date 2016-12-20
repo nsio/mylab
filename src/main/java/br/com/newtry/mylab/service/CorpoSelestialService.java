@@ -28,5 +28,10 @@ public class CorpoSelestialService extends ServiceMyLab<CorpoSelestial> {
 	public CorpoSelestial recuperPeloId(Long id) {
 		return this.corposSelestiais.findOne(id);
 	}
+
+	@Override
+	public void deletar(Long id) {
+		this.corposSelestiais.delete(id);
+	}
 	
 }

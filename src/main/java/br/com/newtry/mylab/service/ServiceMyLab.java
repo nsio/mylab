@@ -7,5 +7,6 @@ public abstract class ServiceMyLab<T> {
 	public abstract void salvar(T entity);
 	public abstract List<T> listarTodos();
 	public abstract T recuperPeloId(Long id);
+	public abstract void deletar(Long id);
 	
 }

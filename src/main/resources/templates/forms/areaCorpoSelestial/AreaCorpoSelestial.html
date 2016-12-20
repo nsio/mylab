@@ -26,6 +26,7 @@
 		</div>
 		<div class="container-fluid">
 			<div class="table-responsive">
+				<div layout:include="/layout/MensagemSucesso"></div>
 				<table id="tableElementos" class="table table-striped table-bordered table-over table-condensed js-sticky-table">
 					<thead class="aw-table-header-solid">
 						<tr>
@@ -49,6 +50,11 @@
 								<a class="btn btn-link btn-xs" th:href="@{/areaCorpoSelestial/{codigo}(codigo=${areaCorpoSelestial.id})}">
 									<span class="glyphicon glyphicon-pencil"></span>
 								</a>
+								<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirmacaoExclusaoModal" 
+									th:attr="data-codigo=${areaCorpoSelestial.id},data-descricao=| a ${areaCorpoSelestial.area} para do corpo selestial ${areaCorpoSelestial.corpoSelestialArea.nomeCorpoSelestial}|" 
+									data-destiny="/areaCorpoSelestial">
+									<span class="glyphicon glyphicon-remove"></span>
+								</a>
 							</td>
 						</tr>
 						<!-- O MESMO FUNCIONA, NO CASO DAS DUAS CHAVES, PARA CONVERSÃO AUTOMÁTICA DO NUMERO -->
@@ -58,6 +64,7 @@
 					</tbody>
 				</table>
 			</div>
+			<div layout:include="/layout/DialogoConfirmacaoExclusao"></div>
 		</div>
 	</section>
 </html>

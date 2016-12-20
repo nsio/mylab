@@ -50,6 +50,11 @@
 								<a class="btn btn-link btn-xs" th:href="@{/composicaoMassa/{codigo}(codigo=${composicaoMassa.id})}">
 									<span class="glyphicon glyphicon-pencil"></span>
 								</a>
+								<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirmacaoExclusaoModal"
+									th:attr="data-codigo=${composicaoMassa.id}, data-descricao=| a composição de massa ${composicaoMassa.composicao} do corpo selestial ${composicaoMassa.corpoSelestialCompMassa.nomeCorpoSelestial}|" 
+									data-destiny="/composicaoMassa">
+									<span class="glyphicon glyphicon-remove"></span>
+								</a>
 							</td>
 						</tr>
 						<!-- O MESMO FUNCIONA, NO CASO DAS DUAS CHAVES, PARA CONVERSÃO AUTOMÁTICA DO NUMERO -->
@@ -59,6 +64,7 @@
 					</tbody>
 				</table>
 			</div>
+			<div layout:include="/layout/DialogoConfirmacaoExclusao"></div>
 		</div>
 	</section>
 </html>

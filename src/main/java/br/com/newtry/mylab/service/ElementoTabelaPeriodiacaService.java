@@ -28,5 +28,10 @@ public class ElementoTabelaPeriodiacaService extends ServiceMyLab<ElementoTabela
 	public ElementoTabelaPeriodica recuperPeloId(Long id) {
 		return this.elementos.findOne(id);
 	}
+
+	@Override
+	public void deletar(Long id) {
+		this.elementos.delete(id);
+	}
 	
 }

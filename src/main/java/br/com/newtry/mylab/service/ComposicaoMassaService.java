@@ -26,5 +26,10 @@ public class ComposicaoMassaService extends ServiceMyLab<ComposicaoMassa> {
 	public ComposicaoMassa recuperPeloId(Long id) {
 		return this.composicoesMassa.findOne(id);
 	}
+
+	@Override
+	public void deletar(Long id) {
+		this.composicoesMassa.delete(id);
+	}
 	
 }

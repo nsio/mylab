@@ -28,5 +28,10 @@ public class TipoCorpoSelestialService extends ServiceMyLab<TipoCorpoSelestial> 
 	public TipoCorpoSelestial recuperPeloId(Long id) {
 		return this.tpsCorposSelesciaisRepo.findOne(id);
 	}
+
+	@Override
+	public void deletar(Long id) {
+		this.tpsCorposSelesciaisRepo.delete(id);
+	}
 	
 }

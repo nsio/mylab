@@ -28,5 +28,10 @@ public class UsuarioService extends ServiceMyLab<Usuario> {
 	public Usuario recuperPeloId(Long id) {
 		return this.usuarios.findOne(id);
 	}
+
+	@Override
+	public void deletar(Long id) {
+		this.usuarios.delete(id);
+	}
 	
 }
