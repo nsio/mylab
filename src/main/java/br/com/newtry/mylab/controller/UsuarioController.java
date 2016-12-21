@@ -44,6 +44,13 @@ public class UsuarioController {
 		return "redirect:/usuario/novo";
 	}
 	
+	@RequestMapping(value="{codigo}", method = RequestMethod.DELETE)
+	public String excluir(@PathVariable Long codigo, RedirectAttributes redirectAttributes){
+		this.usuarioService.deletar(codigo);
+		redirectAttributes.addFlashAttribute("mensagem", "O Tipo de Corpo Selestial foi excuído com sucesso");
+		return "redirect:/usuario";
+	}
+	
 	@RequestMapping("{codigo}")
 	public ModelAndView edicao(@PathVariable("codigo") Usuario usuario){
 		ModelAndView mv = new ModelAndView("/forms/usuario/novo/NovoUsuario");

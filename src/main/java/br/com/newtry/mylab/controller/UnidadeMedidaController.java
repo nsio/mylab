@@ -44,6 +44,13 @@ public class UnidadeMedidaController {
 		return "redirect:/unidadeMedida/novo";
 	}
 	
+	@RequestMapping(value="{codigo}", method = RequestMethod.DELETE)
+	public String excluir(@PathVariable Long codigo, RedirectAttributes redirectAttributes){
+		this.unidadeMedidaService.deletar(codigo);
+		redirectAttributes.addFlashAttribute("mensagem", "A Unidade de Medida foi excluída com sucesso");
+		return "redirect:/unidadeMedida";
+	}
+	
 	@RequestMapping("{codigo}")
 	public ModelAndView edicao(@PathVariable("codigo") UnidadeMedida unidadeMedida){
 		ModelAndView mv = new ModelAndView("/forms/unidadeMedida/novo/NovaUnidadeMedida");

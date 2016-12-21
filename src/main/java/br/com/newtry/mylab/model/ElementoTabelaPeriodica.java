@@ -2,6 +2,7 @@ package br.com.newtry.mylab.model;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +11,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -74,13 +75,13 @@ public class ElementoTabelaPeriodica {
     
 	// RELAÇÃO COM A COMPOSIÇÃO DA MASSA
 	//#############################################################################################################
-	@OneToOne(mappedBy="elementoCompMassa")
-	private ComposicaoMassa elemPlaCompMassa;
-	public ComposicaoMassa getElemPlaCompMassa() {
-		return elemPlaCompMassa;
+	@OneToMany(mappedBy="elementoCompMassa")
+	private List<ComposicaoMassa> elemsPlaCompMassa;
+	public List<ComposicaoMassa> getElemPlaCompMassa() {
+		return elemsPlaCompMassa;
 	}
-	public void setElemPlaCompMassa(ComposicaoMassa elemPlaCompMassa) {
-		this.elemPlaCompMassa = elemPlaCompMassa;
+	public void setElemPlaCompMassa(List<ComposicaoMassa> elemPlaCompMassa) {
+		this.elemsPlaCompMassa = elemPlaCompMassa;
 	}
 	//#############################################################################################################
 	

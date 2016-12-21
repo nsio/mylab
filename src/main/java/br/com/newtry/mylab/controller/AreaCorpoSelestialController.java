@@ -64,7 +64,6 @@ public class AreaCorpoSelestialController {
 		return mv;
 	}
 	
-	
 	@RequestMapping(value="{codigo}", method = RequestMethod.DELETE)
 	public String excluir(@PathVariable Long codigo, RedirectAttributes redirectAttributes){
 		this.areaCorpoSelestialService.deletar(codigo);

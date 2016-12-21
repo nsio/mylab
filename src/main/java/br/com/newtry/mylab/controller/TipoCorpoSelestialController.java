@@ -45,6 +45,13 @@ public class TipoCorpoSelestialController {
 		return "redirect:/tipoCorpoSelestial/novo";
 	}
 	
+	@RequestMapping(value="{codigo}", method = RequestMethod.DELETE)
+	public String excluir(@PathVariable Long codigo, RedirectAttributes redirectAttributes){
+		this.tpsCorposSelestiais.deletar(codigo);
+		redirectAttributes.addFlashAttribute("mensagem", "O Tipo de Corpo Selestial foi excuído com sucesso");
+		return "redirect:/tipoCorpoSelestial";
+	}
+	
 	@RequestMapping("{codigo}")
 	public ModelAndView edicao(@PathVariable("codigo") TipoCorpoSelestial tipoCorpoSelestial){
 		ModelAndView mv = new ModelAndView("/forms/tipoCorpoSelestial/novo/NovoTipoCorpoSelestial");

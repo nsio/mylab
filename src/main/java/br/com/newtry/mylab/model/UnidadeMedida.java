@@ -50,61 +50,63 @@ public class UnidadeMedida {
 	
 	// RELAÇÕES COM A PLANETA
 	//################################################################################
-	@OneToOne(mappedBy="umDiametroEquatorial")
-	private CorpoSelestial csUmDiamentoEquatorial;
-	public CorpoSelestial getCsUmDiamentoEquatorial() {
-		return csUmDiamentoEquatorial;
+	@OneToMany(mappedBy="umDiametroEquatorial")
+	private List<CorpoSelestial> csUmDiamentoEquatorials;
+	public List<CorpoSelestial> getCsUmDiamentoEquatorials() {
+		return csUmDiamentoEquatorials;
 	}
-	public void setCsUmDiamentoEquatorial(CorpoSelestial csUmDiamentoEquatorial) {
-		this.csUmDiamentoEquatorial = csUmDiamentoEquatorial;
-	}
-
-	@OneToOne(mappedBy="umInclinacaoAxial")
-	private CorpoSelestial csUmInclinacaoAxial;
-	public CorpoSelestial getCsUmInclinacaoAxial() {
-		return csUmInclinacaoAxial;
-	}
-	public void setCsUmInclinacaoAxial(CorpoSelestial csUmInclinacaoAxial) {
-		this.csUmInclinacaoAxial = csUmInclinacaoAxial;
+	public void setCsUmDiamentoEquatorials(List<CorpoSelestial> csUmDiamentoEquatorials) {
+		this.csUmDiamentoEquatorials = csUmDiamentoEquatorials;
 	}
 
-	@OneToOne(mappedBy="umAreaTotal")
-	private CorpoSelestial csUmAreaTotal;
-	public CorpoSelestial getCsUmAreaTotal() {
-		return csUmAreaTotal;
+	@OneToMany(mappedBy="umInclinacaoAxial")
+	private List<CorpoSelestial> csUmInclinacaoAxials;
+	public List<CorpoSelestial> getCsUmInclinacaoAxials() {
+		return csUmInclinacaoAxials;
 	}
-	public void setCsUmAreaTotal(CorpoSelestial csUmAreaTotal) {
-		this.csUmAreaTotal = csUmAreaTotal;
+	public void setCsUmInclinacaoAxials(List<CorpoSelestial> csUmInclinacaoAxials) {
+		this.csUmInclinacaoAxials = csUmInclinacaoAxials;
 	}
-
-	@OneToOne(mappedBy="umTemperaturaInterior")
-	private CorpoSelestial csUmTemperaturaMedida;
-	public CorpoSelestial getCsUmTemperaturaMedida() {
-		return csUmTemperaturaMedida;
+	
+	@OneToMany(mappedBy="umAreaTotal")
+	private List<CorpoSelestial> csUmAreaTotals;
+	public List<CorpoSelestial> getCsUmAreaTotals() {
+		return csUmAreaTotals;
 	}
-	public void setCsUmTemperaturaMedida(CorpoSelestial csUmTemperaturaMedida) {
-		this.csUmTemperaturaMedida = csUmTemperaturaMedida;
-	}
-
-	@OneToOne(mappedBy="umVelocidadeEscape")
-	private CorpoSelestial csUmVelocidadeEscape;
-	public CorpoSelestial getCsUmVelocidadeEscape() {
-		return csUmVelocidadeEscape;
-	}
-	public void setCsUmVelocidadeEscape(CorpoSelestial csUmVelocidadeEscape) {
-		this.csUmVelocidadeEscape = csUmVelocidadeEscape;
+	public void setCsUmAreaTotals(List<CorpoSelestial> csUmAreaTotals) {
+		this.csUmAreaTotals = csUmAreaTotals;
 	}
 
-	@OneToOne(mappedBy="umDensidadeMedia")
-	private CorpoSelestial csUmDensidadeMedia;
-	public CorpoSelestial getCsUmDensidadeMedia() {
-		return csUmDensidadeMedia;
+	@OneToMany(mappedBy="umTemperaturaInterior")
+	private List<CorpoSelestial> csUmTemperaturaMedidas;
+	public List<CorpoSelestial> getCsUmTemperaturaMedidas() {
+		return csUmTemperaturaMedidas;
 	}
-	public void setCsUmDensidadeMedia(CorpoSelestial csUmDensidadeMedia) {
-		this.csUmDensidadeMedia = csUmDensidadeMedia;
+	public void setCsUmTemperaturaMedidas(List<CorpoSelestial> csUmTemperaturaMedidas) {
+		this.csUmTemperaturaMedidas = csUmTemperaturaMedidas;
+	}
+
+	@OneToMany(mappedBy="umVelocidadeEscape")
+	private List<CorpoSelestial> csUmVelocidadeEscapes;
+	public List<CorpoSelestial> getCsUmVelocidadeEscapes() {
+		return csUmVelocidadeEscapes;
+	}
+	public void setCsUmVelocidadeEscapes(List<CorpoSelestial> csUmVelocidadeEscapes) {
+		this.csUmVelocidadeEscapes = csUmVelocidadeEscapes;
+	}
+
+	@OneToMany(mappedBy="umDensidadeMedia")
+	private List<CorpoSelestial> csUmDensidadeMedias;
+	public List<CorpoSelestial> getCsUmDensidadeMedias() {
+		return csUmDensidadeMedias;
+	}
+	public void setCsUmDensidadeMedias(List<CorpoSelestial> csUmDensidadeMedias) {
+		this.csUmDensidadeMedias = csUmDensidadeMedias;
 	}
 	//################################################################################
 	
+
+
 	//################################################################################
 	@OneToMany(mappedBy="unidadeMedida")
 	private List<ComposicaoMassa> composicoesMassa;

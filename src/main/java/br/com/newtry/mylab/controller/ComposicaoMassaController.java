@@ -66,6 +66,13 @@ public class ComposicaoMassaController {
 		return mv;
 	}
 	
+	@RequestMapping(value="{codigo}", method = RequestMethod.DELETE)
+	public String excluir(@PathVariable Long codigo, RedirectAttributes redirectAttributes){
+		this.composicaoMassaService.deletar(codigo);
+		redirectAttributes.addFlashAttribute("mensagem", "Composição da Massa foi excuída com sucesso");
+		return "redirect:/composicaoMassa";
+	}
+	
 	@ModelAttribute("unidadesMedida")
 	public List<UnidadeMedida> unidadesMedida(){
 		return this.unidadeMedidaService.listarTodos();

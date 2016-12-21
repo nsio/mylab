@@ -63,6 +63,13 @@ public class CorpoSelestialController {
 		return mv;
 	}
 	
+	@RequestMapping(value="{codigo}", method = RequestMethod.DELETE)
+	public String excluir(@PathVariable Long codigo, RedirectAttributes redirectAttributes){
+		this.corpoSelestialService.deletar(codigo);
+		redirectAttributes.addFlashAttribute("mensagem", "Corpo Selestial foi excuído com sucesso");
+		return "redirect:/corpoSelestial";
+	}
+	
 	@ModelAttribute("unidadesMedida")
 	public List<UnidadeMedida> unidadesMedida(){
 		return this.unidadeMedidaService.listarTodos();

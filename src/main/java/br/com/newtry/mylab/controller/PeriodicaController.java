@@ -69,6 +69,13 @@ public class PeriodicaController {
 		
 	}
 	
+	@RequestMapping(value="{codigo}", method = RequestMethod.DELETE)
+	public String excluir(@PathVariable Long codigo, RedirectAttributes redirectAttributes){
+		this.elementoService.deletar(codigo);
+		redirectAttributes.addFlashAttribute("mensagem", "O Elemento da Tabela Períodica foi excuído com sucesso");
+		return "redirect:/forms/periodica";
+	}
+	
 	// ESSE MÉTODO ANOTADO COM @MODELATTRIBUTE, EVITA DE ADICIONAR VARIAS VEZES A MESMA COLEÇÃO
 	// USANDO O MODELANDVIEW, SEM ESSE METÓDO, A CADA VEZ QUE O USUÁRIO REQUISITAR UMA PÁGINA QUE PRECISA
 	// DA COLEÇÃO DE TIPOS DE ELEMENTOS, SERIA NECESSÁRIO CHAMAR O MÉTODO ADDOBJECT
